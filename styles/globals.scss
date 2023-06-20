@@ -1,0 +1,161 @@
+//constants
+@import "./scss/constants/animation.scss";
+@import "./scss/constants/break-points.scss";
+@import "./scss/constants/color.scss";
+@import "./scss/constants/font.scss";
+
+//functions
+@import "./scss/functions/function.scss";
+@import "./scss/functions/mixins.scss";
+
+// reset
+@import "./scss/reset/sanitize";
+@import "./scss/reset/reset.scss";
+@import "./scss/reset/sanitize-extra.scss";
+
+//utility
+@import "./scss/utility/state.scss";
+
+//global
+@import "./scss/global/base.scss";
+
+$gap: 60px;
+$gap-sp: 26px;
+.archive {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: $darkBlack;
+}
+.archive-cover {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: $darkBlack;
+  z-index: 100;
+  pointer-events: none;
+}
+.archive * {
+  user-select: none;
+}
+.archive-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, #{vw(220)});
+  grid-row-gap: $gap;
+  grid-column-gap: $gap;
+  position: relative;
+  width: calc((#{vw(220)} * 6) + (#{$gap} * 5));
+  padding: $gap * 0.5;
+  box-sizing: content-box;
+  z-index: 1;
+  @include sp() {
+    grid-template-columns: repeat(auto-fit, #{vw_sp(352)});
+    grid-row-gap: $gap-sp;
+    grid-column-gap: $gap-sp;
+    padding: $gap-sp * 0.5;
+    width: calc((#{vw_sp(352)} * 4) + (#{$gap-sp} * 3));
+  }
+}
+.archive-item {
+  position: relative;
+  width: vw(220);
+  height: vw(300);
+  opacity: 1;
+  transform: translate(9999px);
+
+  overflow: hidden;
+
+  @include sp() {
+    width: vw_sp(352);
+    height: vw_sp(528);
+  }
+}
+.archive-item:nth-of-type(even) {
+  margin: vw(-190) 0 0 0;
+  @include sp() {
+    margin: vw_sp(-300) 0 0 0;
+  }
+}
+// SPで余が出ないように消しておく
+.archive-item:nth-of-type(17),
+.archive-item:nth-of-type(18) {
+  @include sp() {
+    display: none;
+  }
+}
+.archive-link {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.archive-textarea {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  padding: 20px;
+  z-index: 1;
+  pointer-events: none;
+  @include sp() {
+    padding: 14px;
+  }
+}
+.archive-circle {
+  display: block;
+  font-size: 36px;
+  text-indent: -4px;
+  line-height: 1;
+  @include sp() {
+    font-size: 28px;
+  }
+}
+.archive-fulltitle {
+  display: block;
+  margin: 0 0 2px 0;
+  font-size: 20px;
+  font-family: $helvetica;
+  line-height: 1.2;
+  @include sp() {
+    font-size: 16px;
+  }
+}
+.archive-index {
+  display: block;
+  font-size: 20px;
+  font-family: $helvetica;
+  line-height: 1.2;
+  @include sp() {
+    font-size: 16px;
+  }
+}
+.archive-shorttitle {
+  position: absolute;
+  bottom: 26px;
+  left: 20px;
+  width: 100%;
+  font-size: 120px;
+  font-family: "Six Caps", sans-serif;
+  @include sp() {
+    bottom: 18px;
+    left: 14px;
+    font-size: 76px;
+  }
+}
+.archive-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 1;
+  object-position: center;
+
+  pointer-events: none;
+}
+
+main {
+  width: 300px;
+}

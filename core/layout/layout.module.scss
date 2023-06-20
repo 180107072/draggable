@@ -1,0 +1,46 @@
+@import "../../styles/scss/single.scss";
+
+$gap: 60px;
+$gap-sp: 26px;
+
+.layoutChildren {
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: 10;
+  width: 400px;
+  height: 100%;
+  background-color: black;
+  display: flex;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.layoutGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, #{vw(220)});
+  grid-row-gap: $gap;
+  grid-column-gap: $gap;
+  position: relative;
+  width: calc((#{vw(220)} * 6) + (#{$gap} * 5));
+  padding: $gap * 0.5;
+  box-sizing: content-box;
+  z-index: 1;
+  @include sp() {
+    grid-template-columns: repeat(auto-fit, #{vw_sp(352)});
+    grid-row-gap: $gap-sp;
+    grid-column-gap: $gap-sp;
+    padding: $gap-sp * 0.5;
+    width: calc((#{vw_sp(352)} * 4) + (#{$gap-sp} * 3));
+  }
+}
+
+.layoutCanvas {
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
